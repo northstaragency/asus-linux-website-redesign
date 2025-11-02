@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Install ROG Control Center</title>
+   <link rel="stylesheet" href="../Styles/install-styles.css">
+</head>
+
+<body>
+    <!-- Custom cursor removed for minimal JS -->
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-accent">ROG</span> Control Center
+            </a>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-expanded="false" aria-label="Open menu">☰</button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="rog-product-hub.html">Product</a></li>
+                
+                <li><a href="rog-playbooks-page.html">Playbooks</a></li>
+                <li><a href="rog-model-page.html">Models</a></li>
+                <li><a href="rog-community-page.html">Community</a></li>
+
+
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Install ROG Control Center on your ASUS laptop</h1>
+                <p class="hero-subtext">3 steps, under 5 minutes. Safe to run. Reversible any time.</p>
+
+                <div class="preflight">
+                    <div class="preflight-title">
+                        <span>✓</span> Quick checks before we start
+                    </div>
+                    <div class="check-grid">
+                        <div class="check-item">
+                            <span class="check-icon">✓</span>
+                            <span class="check-label">You have sudo access</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon">✓</span>
+                            <span class="check-label">Internet connection active</span>
+                        </div>
+                        <div class="check-item">
+                            <span class="check-icon">✓</span>
+                            <span class="check-label">System up-to-date</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="install-section">
+                    <div class="tabs">
+                        <button class="tab active" onclick="switchTab('arch')">Arch / CachyOS / EndeavourOS / Garuda</button>
+                        <button class="tab" onclick="switchTab('fedora')">Fedora</button>
+                        <button class="tab" onclick="switchTab('ubuntu')">Ubuntu/Debian</button>
+                        <button class="tab" onclick="switchTab('opensuse')">openSUSE</button>
+                    </div>
+
+                    <div id="arch" class="tab-content active">
+                        <div class="steps-container">
+                            <div class="step-block">
+                                <span class="step-indicator">Step 1 of 3</span>
+                                <h3 class="step-title">Install the packages</h3>
+                                <p class="step-description">Using your AUR helper, install asusctl and supergfxctl</p>
+
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">yay -S asusctl supergfxctl</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo apt update && sudo apt install asusctl')">Copy</button>
+                                </div>
+
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">Package installs and services start automatically.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 3 of 3</span>
+                                <h3 class="step-title">Launch the app</h3>
+                                <p class="step-description">Open ROG Control Center from your applications menu</p>
+
+                                <span class="reassurance">🛡️ Safe to run • Fully reversible</span>
+                            </div>
+                        </div>
+
+                        <a href="https://asus-linux.org/guides/" class="help-link" target="_blank">
+                            ⚠️ Having trouble? Get step-by-step fixes →
+                        </a>
+                    </div>
+
+                    <div id="fedora" class="tab-content">
+                        <div class="steps-container">
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 1 of 5</span>
+                                <h3 class="step-title">Update Fedora</h3>
+                                <p class="step-description">Ensure your system is up-to-date before installing anything.
+                                </p>
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo dnf update -y</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo dnf update -y')">Copy</button>
+                                </div>
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">System packages updated successfully.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 2 of 5</span>
+                                <h3 class="step-title">Enable RPM Fusion (for NVIDIA users)</h3>
+                                <p class="step-description">Required for proprietary NVIDIA drivers.</p>
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">
+                                        sudo dnf install
+                                        https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E
+                                        %fedora).noarch.rpm
+                                        https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E
+                                        %fedora).noarch.rpm
+                                    </div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm')">Copy</button>
+                                </div>
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">RPM Fusion repositories enabled.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 3 of 5</span>
+                                <h3 class="step-title">Enable the COPR repository</h3>
+                                <p class="step-description">Add the asus-linux repository to access ROG packages.</p>
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo dnf copr enable lukenukem/asus-linux</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo dnf copr enable lukenukem/asus-linux')">Copy</button>
+                                </div>
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">Repository enabled successfully.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 4 of 5</span>
+                                <h3 class="step-title">Install ROG packages</h3>
+                                <p class="step-description">Install asusctl and supergfxctl for hardware control.</p>
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo dnf install asusctl supergfxctl</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo dnf install asusctl supergfxctl')">Copy</button>
+                                </div>
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">Packages installed and services started.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 5 of 5</span>
+                                <h3 class="step-title">Enable services</h3>
+                                <p class="step-description">Start the background daemons for GPU switching and power
+                                    profiles.</p>
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo systemctl enable --now supergfxd.service</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo systemctl enable --now supergfxd.service')">Copy</button>
+                                </div>
+                                <span class="reassurance">🛡️ Safe to run • Fully reversible</span>
+                            </div>
+
+                        </div>
+
+                        <a href="https://asus-linux.org/guides/fedora-guide/" class="help-link" target="_blank">
+                            📘 Full Fedora guide with advanced tweaks →
+                        </a>
+                    </div>
+
+
+                    <div id="opensuse" class="tab-content">
+                        <div class="steps-container">
+                            <div class="step-block">
+                                <span class="step-indicator">Step 1 of 3</span>
+                                <h3 class="step-title">Add the repository</h3>
+                                <p class="step-description">Enable the asus-linux repository for openSUSE</p>
+
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo zypper ar
+                                        https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/
+                                        asus</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo zypper ar https://download.opensuse.org/repositories/home:/luke_nukem:/asus/openSUSE_Tumbleweed/ asus')">Copy</button>
+                                </div>
+
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">Repository added successfully.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 2 of 3</span>
+                                <h3 class="step-title">Install the package</h3>
+                                <p class="step-description">Download and install asusctl</p>
+
+                                <div class="command-block">
+                                    <div class="command-label">Run this command:</div>
+                                    <div class="command-code">sudo zypper install asusctl</div>
+                                    <button class="copy-btn"
+                                        onclick="copyCommand(this, 'sudo zypper install asusctl')">Copy</button>
+                                </div>
+
+                                <div class="expected-output">
+                                    <div class="expected-label">Expected output</div>
+                                    <div class="expected-text">Package installs and services start automatically.</div>
+                                </div>
+                            </div>
+
+                            <div class="step-block">
+                                <span class="step-indicator">Step 3 of 3</span>
+                                <h3 class="step-title">Launch the app</h3>
+                                <p class="step-description">Find ROG Control Center in your applications menu</p>
+
+                                <span class="reassurance">🛡️ Safe to run • Fully reversible</span>
+                            </div>
+                        </div>
+
+                        <a href="https://asus-linux.org/guides/" class="help-link" target="_blank">
+                            ⚠️ Having trouble? Get step-by-step fixes →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="whats-next">
+            <h2 class="whats-next-title">What's Next?</h2>
+
+            <div class="next-grid">
+                <a href="#open-app" class="next-card">
+                    <span class="next-icon">🚀</span>
+                    <h3 class="next-title">Open Control Center</h3>
+                    <p class="next-desc">Launch the app and explore profiles, GPU modes, and fan controls. Your
+                        dashboard is ready.</p>
+                </a>
+
+                <a href="#playbooks" class="next-card">
+                    <span class="next-icon">📖</span>
+                    <h3 class="next-title">Start with a Playbook</h3>
+                    <p class="next-desc">Follow quick guides to switch GPUs, cap battery charge, or quiet your fans in
+                        under 3 minutes.</p>
+                </a>
+
+                <a href="#models" class="next-card">
+                    <span class="next-icon">💻</span>
+                    <h3 class="next-title">See supported laptops</h3>
+                    <p class="next-desc">Check which features work on your specific ROG model and report new hardware.
+                    </p>
+                </a>
+            </div>
+
+            <div class="faq-section">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        What does ROG Control Center do?
+                    </div>
+                    <div class="faq-answer">
+                        ROG Control Center gives you full control over your ASUS ROG laptop's hardware on Linux. Switch
+                        between integrated and dedicated GPUs, customize fan curves, manage battery charge limits, and
+                        create performance profiles—all without touching config files or terminal commands.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Does it work with my model?
+                    </div>
+                    <div class="faq-answer">
+                        Most ASUS ROG laptops from 2018 onwards are supported, including G14, G15, Flow X13, Zephyrus,
+                        and Strix series. Check the Models page for your specific laptop and see which features are
+                        available. If your model isn't listed, you can report it to help expand support.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Is it safe? Can I uninstall it?
+                    </div>
+                    <div class="faq-answer">
+                        Yes. All changes are reversible, and the app includes confirmations for risky actions. To
+                        uninstall, simply remove the packages using your package manager:
+                        <code>sudo pacman -R asusctl supergfxctl</code> (Arch) or equivalent for your distro. Your
+                        system returns to defaults.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        What if I need help or encounter an error?
+                    </div>
+                    <div class="faq-answer">
+                        Check the Playbooks section for step-by-step troubleshooting guides. For detailed help, visit <a
+                            href="https://asus-linux.org/guides/" target="_blank">asus-linux.org/guides</a>. You can
+                        also join the community Discord or GitHub discussions for real-time support.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
+                        <span class="faq-toggle">+</span>
+                        Will this break Secure Boot or dual-boot with Windows?
+                    </div>
+                    <div class="faq-answer">
+                        ROG Control Center works with Secure Boot enabled on most distros. For dual-boot setups, GPU
+                        switching may require a reboot, but Windows will recognize the changes. If you encounter issues,
+                        check the Playbooks for specific guides on Secure Boot configuration and dual-boot GPU
+                        management.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button class="sticky-help" onclick="scrollToHelp()">
+        <span>⚠️</span> Problems or errors?
+    </button>
+
+    <footer>
+        <div class="footer-content">
+            <p>ROG Control Center for Linux • Open source hardware control for ASUS ROG laptops</p>
+            <div class="footer-links">
+                <a href="https://asus-linux.org/guides/" target="_blank">Documentation</a>
+                <a href="#community">Community</a>
+                <a href="#github">GitHub</a>
+                <a href="#support">Support</a>
+                <a href="#license">License</a>
+            </div>
+        </div>
+    </footer>
+<script src="../Script/install-script.js"></script>    
+</body>
+
+</html>
